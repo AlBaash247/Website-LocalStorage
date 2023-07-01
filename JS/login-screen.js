@@ -1,38 +1,53 @@
+import {
+    KEY_APP_ROLE_ADMIN,
+    KEY_APP_ROLE_VENDOR,
+    KEY_APP_ROLE_USER,
+    KEY_LOCAL_STORAGE_ROLE,
+    KEY_LOCAL_STORAGE_EMAIL,
+    KEY_LOCAL_STORAGE_PASSWORD
+} from './KEYs.js';
+
+
+
+let selectedRole = KEY_APP_ROLE_ADMIN
+
 let btnAdmin = document.getElementById("btnAdmin")
 let btnVendor = document.getElementById("btnVendor")
-let btnUser = document.getElementById("btnUser")
+let btnClient = document.getElementById("btnClient")
 
-let adminForm = document.getElementById("adminForm")
-let vendorForm = document.getElementById("vendorForm")
-let userForm = document.getElementById("userForm")
+let emailHint = document.getElementById("emailHint")
+let passwordHint = document.getElementById("passwordHint")
 
 let btnLogin = document.getElementById("btnLogin")
 
 btnAdmin.onclick = () => {
-    activeRole("Admin")
+    activeRole(ROLE_ADMIN)
 }
 btnVendor.onclick = () => {
-    activeRole("Vendor")
+    activeRole(KEY_APP_ROLE_VENDOR)
 }
-btnUser.onclick = () => {
-    activeRole("User")
+btnClient.onclick = () => {
+    activeRole(KEY_APP_ROLE_USER)
 }
 
+btnLogin.onclick = () => {
+    validate()
+}
 
 function activeRole(role) {
-    btnLogin.innerText = "Login as "+role
+
+    selectedRole = role
+
+    emailHint.innerText = role + " Email"
+    passwordHint.innerText = role + " Password"
+    btnLogin.innerText = "Login as " + role
 
     switch (role) {
         case "Admin":
             {
                 btnAdmin.classList.add("active");
                 btnVendor.classList.remove("active");
-                btnUser.classList.remove("active");
-
-                adminForm.classList.remove("visually-hidden");
-                vendorForm.classList.add("visually-hidden");
-                userForm.classList.add("visually-hidden");
-
+                btnClient.classList.remove("active");
                 break;
             }
 
@@ -40,27 +55,85 @@ function activeRole(role) {
             {
                 btnAdmin.classList.remove("active");
                 btnVendor.classList.add("active");
-                btnUser.classList.remove("active");
-
-                adminForm.classList.add("visually-hidden");
-                vendorForm.classList.remove("visually-hidden");
-                userForm.classList.add("visually-hidden");
-
+                btnClient.classList.remove("active");
                 break;
             }
 
-
-        case "User":
+        case "Client":
             {
                 btnAdmin.classList.remove("active");
                 btnVendor.classList.remove("active");
-                btnUser.classList.add("active");
-
-                adminForm.classList.add("visually-hidden");
-                vendorForm.classList.add("visually-hidden");
-                userForm.classList.remove("visually-hidden");
+                btnClient.classList.add("active");
                 break;
             }
     }
 
+}
+
+function validate() {
+    //is-invalid visually-hidden
+
+    let inputEmail = document.getElementById("inputEmail")
+    // let inputPassword = document.getElementById("inputPassword")
+
+    let email = inputEmail.value
+    let password = inputPassword.value
+
+
+    const isValidClient = isEmailValid(email) && isPasswordValid(password)
+    toggleErrorHints(email, password)
+
+    if (isValidClient) {
+        storeUser(email, password)
+    }
+
+
+}
+
+function isEmailValid(email) {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+}
+
+function isPasswordValid(password) {
+    console.log(password)
+    return password.length >= 6
+}
+
+function toggleErrorHints(email, password) {
+
+    let emailErrorHint = document.getElementById("emailErrorHint")
+    let passwordErrorHint = document.getElementById("passwordErrorHint")
+
+    if (isEmailValid(email)) {
+        emailHint.classList.remove("visually-hidden")
+        emailErrorHint.classList.add("visually-hidden")
+    } else {
+        emailHint.classList.add("visually-hidden")
+        emailErrorHint.classList.remove("visually-hidden")
+    }
+
+    if (isPasswordValid(password)) {
+        passwordHint.classList.remove("visually-hidden")
+        passwordErrorHint.classList.add("visually-hidden")
+    } else {
+        passwordHint.classList.add("visually-hidden")
+        passwordErrorHint.classList.remove("visually-hidden")
+    }
+}
+
+function storeUser(email, password) {
+    
+    localStorage.setItem(KEY_LOCAL_STORAGE_ROLE, selectedRole)
+    localStorage.setItem(KEY_LOCAL_STORAGE_EMAIL, email)
+    localStorage.setItem(KEY_LOCAL_STORAGE_PASSWORD, password)
+
+    openMainScreen()
+}
+
+function openMainScreen() {
+    window.location.href = "./main-screen.html";
 }
