@@ -132,6 +132,7 @@ function toggleErrorHints(email, password) {
 
 function storeUser(email, password) {
 
+    // localStorage.setItem("key", "value: string, int, double,bool")
     localStorage.setItem(KEY_LOCAL_STORAGE_ROLE, selectedRole)
     localStorage.setItem(KEY_LOCAL_STORAGE_EMAIL, email)
     localStorage.setItem(KEY_LOCAL_STORAGE_PASSWORD, password)

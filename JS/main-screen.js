@@ -12,6 +12,7 @@ function displayContent() {
     let txtEmail = document.getElementById("txtEmail")
     let txtPassword = document.getElementById("txtPassword")
 
+    // localStorage.getItem("key")
     let role = localStorage.getItem(KEY_LOCAL_STORAGE_ROLE)
     let email = localStorage.getItem(KEY_LOCAL_STORAGE_EMAIL)
     let password = localStorage.getItem(KEY_LOCAL_STORAGE_PASSWORD)
