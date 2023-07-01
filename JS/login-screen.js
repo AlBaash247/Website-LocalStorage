@@ -15,13 +15,16 @@ let btnAdmin = document.getElementById("btnAdmin")
 let btnVendor = document.getElementById("btnVendor")
 let btnClient = document.getElementById("btnClient")
 
+let inputEmail = document.getElementById("inputEmail")
+let inputPassword = document.getElementById("inputPassword")
+
 let emailHint = document.getElementById("emailHint")
 let passwordHint = document.getElementById("passwordHint")
 
 let btnLogin = document.getElementById("btnLogin")
 
 btnAdmin.onclick = () => {
-    activeRole(ROLE_ADMIN)
+    activeRole(KEY_APP_ROLE_ADMIN)
 }
 btnVendor.onclick = () => {
     activeRole(KEY_APP_ROLE_VENDOR)
@@ -45,6 +48,8 @@ function activeRole(role) {
     switch (role) {
         case "Admin":
             {
+                inputEmail.value = "admin@example.com"
+                inputPassword.value = "123123"
                 btnAdmin.classList.add("active");
                 btnVendor.classList.remove("active");
                 btnClient.classList.remove("active");
@@ -53,6 +58,8 @@ function activeRole(role) {
 
         case "Vendor":
             {
+                inputEmail.value = "vendor@example.com"
+                inputPassword.value = "456456"
                 btnAdmin.classList.remove("active");
                 btnVendor.classList.add("active");
                 btnClient.classList.remove("active");
@@ -61,6 +68,8 @@ function activeRole(role) {
 
         case "Client":
             {
+                inputEmail.value = "client@example.com"
+                inputPassword.value = "890890"
                 btnAdmin.classList.remove("active");
                 btnVendor.classList.remove("active");
                 btnClient.classList.add("active");
@@ -71,10 +80,6 @@ function activeRole(role) {
 }
 
 function validate() {
-    //is-invalid visually-hidden
-
-    let inputEmail = document.getElementById("inputEmail")
-    // let inputPassword = document.getElementById("inputPassword")
 
     let email = inputEmail.value
     let password = inputPassword.value
@@ -126,7 +131,7 @@ function toggleErrorHints(email, password) {
 }
 
 function storeUser(email, password) {
-    
+
     localStorage.setItem(KEY_LOCAL_STORAGE_ROLE, selectedRole)
     localStorage.setItem(KEY_LOCAL_STORAGE_EMAIL, email)
     localStorage.setItem(KEY_LOCAL_STORAGE_PASSWORD, password)
