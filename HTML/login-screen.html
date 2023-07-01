@@ -1,0 +1,98 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../CSS/global.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center h-100">
+
+
+            <div class="flex-fill row justify-content-center align-items-center">
+                <!-- roles -->
+
+                <div class="col-sm-12 col-md-10 col-xl-8 shadow-lg rounded p-3 p-md-5">
+                    <div class="btn-group">
+                        <a id="btnAdmin" href="#" class="btn btn-outline-dark text-uppercase active"
+                            aria-current="page">Admin</a>
+                        <a id="btnVendor" href="#" class="btn btn-outline-dark text-uppercase">Vendor</a>
+                        <a id="btnUser" href="#" class="btn btn-outline-dark text-uppercase">User</a>
+                    </div>
+
+                    <!-- Admin | form -->
+                    <div id="adminForm" class="mt-2 mt-md-4">
+                        <div class="form-floating mb-3">
+                            <input id="inputAdminEmail" type="email" class="form-control" id="floatingInput"
+                                placeholder="name@example.com">
+                            <label for="floatingInput">Admin Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="inputAdminPassword" type="password" class="form-control" id="floatingPassword"
+                                placeholder="Password">
+                            <label for="floatingPassword">Admin Password</label>
+                        </div>
+                    </div>
+                    <!-- Admin | form -->
+
+                    <!-- Vendor | form -->
+                    <div id="vendorForm" class="mt-2 mt-md-4 visually-hidden">
+                        <div class="form-floating mb-3">
+                            <input id="inputVendorEmail" type="email" class="form-control" id="floatingInput"
+                                placeholder="name@example.com">
+                            <label for="floatingInput">Vendor Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="inputVendorPassword" type="password" class="form-control" id="floatingPassword"
+                                placeholder="Password">
+                            <label for="floatingPassword">Vendor Password</label>
+                        </div>
+                    </div>
+                    <!-- Vendor | form -->
+
+                    <!-- User | form -->
+                    <div id="userForm" class="mt-2 mt-md-4 visually-hidden">
+                        <div class="form-floating mb-3">
+                            <input id="inputUserEmail" type="email" class="form-control" id="floatingInput"
+                                placeholder="name@example.com">
+                            <label for="floatingInput">User Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="inputUserPassword" type="password" class="form-control" id="floatingPassword"
+                                placeholder="Password">
+                            <label for="floatingPassword">User Password</label>
+                        </div>
+                    </div>
+                    <!-- Vendor | form -->
+
+
+                    <div class="mt-2 mt-md-4 d-flex justify-content-center align-items-center w-100">
+                        <button id="btnLogin" type="button" class="btn btn-lg text-white bg-dark w-50 text-uppercase">
+                            Login as Admin
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+        <script src="../JS/login-screen.js"></script>
+
+</body>
+
+</html>

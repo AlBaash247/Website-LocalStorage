@@ -1,0 +1,18 @@
+/* 
+Ref: https://metricool.com/instagram-image-size/
+*/
+.instaPost_square {
+    width: 1080px;
+    height: 1080px;
+}
+
+.instaPost_horizontal {
+    background-color: blanchedalmond;
+    width: 1080px;
+    height: 566px;
+}
+
+.instaPost_vertical {
+    width: 1080px;
+    height: 1350px;
+}
